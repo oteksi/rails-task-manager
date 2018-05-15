@@ -1,17 +1,24 @@
 <div class="container">
 
-  <h1>Here we go !</h1>
+  <h1>List of tasks</h1>
 
   <ul>
-  <% @letters.each do |letter| %>
-    <li class="letter"><%= letter %></li>
+  <% @tasks.each do |task| %>
+    <li class="task">
+      <% if task.completed %>
+        <input type="checkbox" checked>
+      <% else %>
+        <input type="checkbox">
+      <% end  %>
+      <%= link_to task.title, task_path(task) %>
+
+      <%= link_to "Delete", task_path(task),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
+    </li>
   <% end %>
   </ul>
 
-  <form action="score" method="get">
-    <input name="grid" type="hidden" value=<%= @letters.join%>>
-    <input type="text" name="attempt" placeholder="What the longest world you can find?">
-    <input type="submit" value="Play">
-  </form>
+  <%= link_to "+ Add a new task", new_task_path %>
 
 </div>

@@ -1,0 +1,8 @@
+<div class="details">
+  <h1><%= @task.title %></h1>
+  <%= @task.details %> </div></br>
+  <%= @task.completed ? "The task is completed" : "The task is uncompleted" %></br></br>
+  <%= link_to "Edit this task", edit_task_path(@task.id) %></br></br>
+  <p>------------------------------------------</p>
+  <%= link_to "Back to the link", tasks_path %>
+</div>
